@@ -10,6 +10,54 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header class="row">
+      <div class="col-3">
+        <%= link_to root_path, class: 'logo' do %>
+          <div class="circle">
+            <br />
+            WHEN YOU
+            <br />
+            JUST CAN'T
+            <br />
+            DECIDE
+          </div>
+        <% end %>
+      </div>
+      <div class="col-4 slogan">
+      Store and randomly access your recipes here.
+      </div>
+      <div class="col-5 links">
+        <%= link_to 'Enter a Recipe', new_recipe_path %>
+        <%= link_to 'About', 'about_path' %>
+      </div>
+    </header>
+
+    <hr />
+
+    <br class="clear" />
+
+    <div class="container">
+      <% if flash[:error].present? %>
+      <div class="col-10 offset-1 alert alert-danger">
+        <%= flash[:error].html_safe %>
+      </div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+           <%= link_to "I'm still hungry", root_path, class:'next-recipe' %>
+          </div>
+          <div class="col-6 footer-blurb">
+            Hacked together by <a href="github.com/tcloetingh">Tyler Cloetingh</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
